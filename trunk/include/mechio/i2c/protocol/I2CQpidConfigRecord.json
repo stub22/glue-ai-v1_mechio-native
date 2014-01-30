@@ -1,0 +1,24 @@
+{"name": "I2CQpidConfigRecord", "type": "record",
+    "fields": [
+        {"name": "brokerIPAddress",   "type": "string"},
+        {"name": "brokerOptions",   "type": "string"},
+        {"name": "deviceScheduleDestination",   "type": "string"},
+        {"name": "i2cCommandDestination",   "type": "string"},
+        {"name": "i2cDataDestination",   "type": "string"},
+        {"name": "accelerometerEventDestination",   "type": "string"},
+        {"name": "accelerometerConfigDestination",   "type": "string"},
+        {"name": "compassEventDestination",   "type": "string"},
+        {"name": "compassConfigDestination",   "type": "string"},
+        {"name": "gyroscopeEventDestination",   "type": "string"},
+        {"name": "gyroscopeConfigDestination",   "type": "string"},
+        {"name": "gpioCommandDestination",   "type": "string"},
+        {"name": "gpioWriteCommandDestination",   "type": "string"},
+        {"name": "gpioEventDestination",   "type": "string"},
+        {"name": "gpioConfigDestination",   "type": "string"},
+        {"name": "adcCommandDestination",   "type": "string"},
+        {"name": "adcEventDestination",   "type": "string"},
+        {"name": "adcConfigDestination",   "type": "string"},
+        {"name": "ledCommandDestination",   "type": "string"},
+        {"name": "ledConfigDestination",   "type": "string"}
+    ]
+}

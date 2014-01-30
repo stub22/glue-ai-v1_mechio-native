@@ -1,0 +1,118 @@
+[
+    {"name": "HeaderRecord", "type": "record",
+        "fields": [
+            {"name": "timestamp",   "type": "long"},
+            {"name": "sequenceId",   "type": "int"},
+            {"name": "frameId",     "type": "int"}
+        ]
+    },
+    {"name": "Vector3Record", "type": "record",
+        "fields": [
+            {"name": "x",   "type": "double"},
+            {"name": "y",   "type": "double"},
+            {"name": "z",   "type": "double"}
+        ]
+    },
+    {"name": "StampedVector3Record", "type": "record",
+        "fields": [
+            {"name": "header",   "type": "HeaderRecord"},
+            {"name": "vector",   "type": "Vector3Record"}
+        ]
+    },
+    {"name": "FilteredVector3Record", "type": "record",
+        "fields": [
+            {"name": "header",   "type": "HeaderRecord"},
+            {"name": "rawVector",   "type": "Vector3Record"},
+            {"name": "filteredVector",   "type": "Vector3Record"}
+        ]
+    },
+    {"name": "DeviceAnalogRecord", "type": "record",
+        "fields": [
+            {"name": "header",   "type": "HeaderRecord"},
+            {"name": "channelId",   "type": "int"},
+            {"name": "analogValue",   "type": "double"}
+        ]
+    },
+    {"name": "DeviceBoolRecord", "type": "record",
+        "fields": [
+            {"name": "header",   "type": "HeaderRecord"},
+            {"name": "channelId",   "type": "int"},
+            {"name": "boolValue",   "type": "boolean"}
+        ]
+    },
+    {"name": "GyroConfigRecord", "type": "record",
+        "fields": [
+            {"name": "header",   "type": "HeaderRecord"},
+            {"name": "ctl1",   "type": "int"},
+            {"name": "ctl2",   "type": "int"},
+            {"name": "ctl3",   "type": "int"},
+            {"name": "ctl4",   "type": "int"},
+            {"name": "ctl5",   "type": "int"}
+		]
+	},
+    {"name": "AccelerometerConfigRecord", "type": "record",
+        "fields": [
+            {"name": "header",   "type": "HeaderRecord"},
+            {"name": "reg",   "type": "int"},
+            {"name": "value",   "type": "int"}
+		]
+	},
+    {"name": "CompassConfigRecord", "type": "record",
+        "fields": [
+            {"name": "header",   "type": "HeaderRecord"},
+            {"name": "rate",   "type": "int"},
+            {"name": "bias",   "type": "int"},
+            {"name": "gain",   "type": "int"}
+		]
+	},
+    {"name": "AdcConfigRecord", "type": "record",
+        "fields": [
+            {"name": "header",   "type": "HeaderRecord"},
+            {"name": "channelMask",   "type": "int"}
+		]
+	},
+    {"name": "GpioConfigRecord", "type": "record",
+        "fields": [
+            {"name": "header",   "type": "HeaderRecord"},
+            {"name": "inputMask",   "type": "int"}
+		]
+	},
+    {"name": "DeviceReadPeriodRecord", "type": "record",
+        "fields": [
+            {"name": "header",   "type": "HeaderRecord"},
+            {"name": "period",   "type": "double"}
+		]
+	},
+    {"name": "RGBOutputRecord", "type": "record",
+        "fields": [
+            {"name": "header",   "type": "HeaderRecord"},
+            {"name": "channelId",   "type": "int"},
+            {"name": "red",   "type": "int"},
+            {"name": "green",   "type": "int"},
+            {"name": "blue",   "type": "int"}
+        ]
+    },
+    {"name": "I2CQpidConfigRecord", "type": "record",
+        "fields": [
+            {"name": "brokerIPAddress",   "type": "string"},
+            {"name": "brokerOptions",   "type": "string"},
+            {"name": "accelerometerReadDestination",   "type": "string"},
+            {"name": "accelerometerEventDestination",   "type": "string"},
+            {"name": "accelerometerConfigDestination",   "type": "string"},
+            {"name": "compassReadDestination",   "type": "string"},
+            {"name": "compassEventDestination",   "type": "string"},
+            {"name": "compassConfigDestination",   "type": "string"},
+            {"name": "gyroReadDestination",   "type": "string"},
+            {"name": "gyroEventDestination",   "type": "string"},
+            {"name": "gyroConfigDestination",   "type": "string"},
+            {"name": "gpioReadDestination",   "type": "string"},
+            {"name": "gpioWriteDestination",   "type": "string"},
+            {"name": "gpioEventDestination",   "type": "string"},
+            {"name": "gpioConfigDestination",   "type": "string"},
+            {"name": "adcReadDestination",   "type": "string"},
+            {"name": "adcEventDestination",   "type": "string"},
+            {"name": "adcConfigDestination",   "type": "string"},
+            {"name": "ledConfigDestination",   "type": "string"}
+        ]
+    }
+]

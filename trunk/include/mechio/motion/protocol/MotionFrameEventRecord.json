@@ -1,0 +1,40 @@
+{"name": "MotionFrameEventRecord", "type": "record",
+	"fields": [
+		{"name": "sourceId", "type": "string"},
+		{"name": "destinationId", "type": "string"},
+		{"name": "currentTimeMillisecUTC", "type": "long"},
+		{"name": "motionFrame", "type": 
+			{"name": "MotionFrameRecord", "type": "record",
+				"fields": [
+					{"name": "timestampMillisecUTC",   "type": "long"},
+					{"name": "moveDurationMillisec",   "type": "long"},
+					{"name": "goalPositions",   "type": 
+						{"name": "RobotPositionMapRecord", "type": "record",
+							"fields": [
+								{"name": "jointPositions", "type": 
+									{"type":"array", "items": 
+										{"name": "JointPositionRecord", "type": "record",
+											"fields": [
+												{"name": "jointId", "type": 
+													{"name": "JointIdRecord", "type": "record",
+														"fields": [
+															{"name": "robotId",   "type": "string"},
+															{"name": "jointId",   "type": "int"}
+														]
+													}
+												},
+												{"name": "normalizedPosition",   "type": "double"}
+											]
+										}
+									}
+								}
+							]
+						}
+					},
+					{"name" : "startPositions", "type": ["RobotPositionMapRecord", "null"]}
+				]
+			}
+		}
+	]
+}
+

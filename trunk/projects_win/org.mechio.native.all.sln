@@ -1,0 +1,157 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 10.00
+# Visual C++ Express 2008
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "org.mechio.native.common", "org.mechio.native.lib\org.mechio.native.common\org.mechio.native.common.vcproj", "{5060B9A6-C6EE-47A3-90EF-F52442CBD737}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "org.mechio.native.messaging", "org.mechio.native.lib\org.mechio.native.messaging\org.mechio.native.messaging.vcproj", "{86F90859-4E57-46A6-9D6C-6B6F0C289CB7}"
+	ProjectSection(ProjectDependencies) = postProject
+		{5060B9A6-C6EE-47A3-90EF-F52442CBD737} = {5060B9A6-C6EE-47A3-90EF-F52442CBD737}
+	EndProjectSection
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "org.mechio.native.speech", "org.mechio.native.lib\org.mechio.native.speech\org.mechio.native.speech.vcproj", "{4CCD0BEA-42B2-41A3-96BE-0C08F1E490E1}"
+	ProjectSection(ProjectDependencies) = postProject
+		{86F90859-4E57-46A6-9D6C-6B6F0C289CB7} = {86F90859-4E57-46A6-9D6C-6B6F0C289CB7}
+		{5060B9A6-C6EE-47A3-90EF-F52442CBD737} = {5060B9A6-C6EE-47A3-90EF-F52442CBD737}
+	EndProjectSection
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "org.mechio.native.speech.mssapi", "org.mechio.native.lib\org.mechio.native.speech.mssapi\org.mechio.native.speech.mssapi.vcproj", "{1F2B2AA9-9CA3-4EA0-A520-2E6939EB47BF}"
+	ProjectSection(ProjectDependencies) = postProject
+		{4CCD0BEA-42B2-41A3-96BE-0C08F1E490E1} = {4CCD0BEA-42B2-41A3-96BE-0C08F1E490E1}
+	EndProjectSection
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "org.mechio.native.vision", "org.mechio.native.lib\org.mechio.native.vision\org.mechio.native.vision.vcproj", "{D76AA1C1-4D36-44EA-B196-061104192BC2}"
+	ProjectSection(ProjectDependencies) = postProject
+		{86F90859-4E57-46A6-9D6C-6B6F0C289CB7} = {86F90859-4E57-46A6-9D6C-6B6F0C289CB7}
+		{5060B9A6-C6EE-47A3-90EF-F52442CBD737} = {5060B9A6-C6EE-47A3-90EF-F52442CBD737}
+	EndProjectSection
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "org.mechio.native.vision.camera", "org.mechio.native.lib\org.mechio.native.vision.camera\org.mechio.native.vision.camera.vcproj", "{77EA1C5E-14F8-46D0-89AC-C08C3AD10E9F}"
+	ProjectSection(ProjectDependencies) = postProject
+		{D76AA1C1-4D36-44EA-B196-061104192BC2} = {D76AA1C1-4D36-44EA-B196-061104192BC2}
+	EndProjectSection
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "org.mechio.native.vision.display", "org.mechio.native.lib\org.mechio.native.vision.display\org.mechio.native.vision.display.vcproj", "{3E8168CA-D88D-41A2-A59F-48821F428B14}"
+	ProjectSection(ProjectDependencies) = postProject
+		{D76AA1C1-4D36-44EA-B196-061104192BC2} = {D76AA1C1-4D36-44EA-B196-061104192BC2}
+	EndProjectSection
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "org.mechio.native.vision.proc.facedetect", "org.mechio.native.lib\org.mechio.native.vision.proc.facedetect\org.mechio.native.vision.proc.facedetect.vcproj", "{7313D673-D1F5-4DEC-8B51-AAB6AC783D32}"
+	ProjectSection(ProjectDependencies) = postProject
+		{D76AA1C1-4D36-44EA-B196-061104192BC2} = {D76AA1C1-4D36-44EA-B196-061104192BC2}
+	EndProjectSection
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "CameraCapture", "org.mechio.native.app\CameraCapture\CameraCapture.vcproj", "{C84DCC96-DA4E-4071-B9E1-99503ABF7A2F}"
+	ProjectSection(ProjectDependencies) = postProject
+		{86F90859-4E57-46A6-9D6C-6B6F0C289CB7} = {86F90859-4E57-46A6-9D6C-6B6F0C289CB7}
+		{77EA1C5E-14F8-46D0-89AC-C08C3AD10E9F} = {77EA1C5E-14F8-46D0-89AC-C08C3AD10E9F}
+		{5060B9A6-C6EE-47A3-90EF-F52442CBD737} = {5060B9A6-C6EE-47A3-90EF-F52442CBD737}
+		{D76AA1C1-4D36-44EA-B196-061104192BC2} = {D76AA1C1-4D36-44EA-B196-061104192BC2}
+	EndProjectSection
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "CameraDisplay", "org.mechio.native.app\CameraDisplay\CameraDisplay.vcproj", "{24AEA762-80FC-45E4-A043-534814FF7B26}"
+	ProjectSection(ProjectDependencies) = postProject
+		{86F90859-4E57-46A6-9D6C-6B6F0C289CB7} = {86F90859-4E57-46A6-9D6C-6B6F0C289CB7}
+		{77EA1C5E-14F8-46D0-89AC-C08C3AD10E9F} = {77EA1C5E-14F8-46D0-89AC-C08C3AD10E9F}
+		{7313D673-D1F5-4DEC-8B51-AAB6AC783D32} = {7313D673-D1F5-4DEC-8B51-AAB6AC783D32}
+		{5060B9A6-C6EE-47A3-90EF-F52442CBD737} = {5060B9A6-C6EE-47A3-90EF-F52442CBD737}
+		{D76AA1C1-4D36-44EA-B196-061104192BC2} = {D76AA1C1-4D36-44EA-B196-061104192BC2}
+		{3E8168CA-D88D-41A2-A59F-48821F428B14} = {3E8168CA-D88D-41A2-A59F-48821F428B14}
+	EndProjectSection
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "FaceDetector", "org.mechio.native.app\FaceDetector\FaceDetector.vcproj", "{375E12CA-BFCF-45D0-B561-46F84159B683}"
+	ProjectSection(ProjectDependencies) = postProject
+		{86F90859-4E57-46A6-9D6C-6B6F0C289CB7} = {86F90859-4E57-46A6-9D6C-6B6F0C289CB7}
+		{7313D673-D1F5-4DEC-8B51-AAB6AC783D32} = {7313D673-D1F5-4DEC-8B51-AAB6AC783D32}
+		{5060B9A6-C6EE-47A3-90EF-F52442CBD737} = {5060B9A6-C6EE-47A3-90EF-F52442CBD737}
+		{D76AA1C1-4D36-44EA-B196-061104192BC2} = {D76AA1C1-4D36-44EA-B196-061104192BC2}
+	EndProjectSection
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "SAPIClient", "org.mechio.native.app\SAPIClient\SAPIClient.vcproj", "{098BB9E1-A7D7-4E29-8A2F-51C185C1AA4F}"
+	ProjectSection(ProjectDependencies) = postProject
+		{1F2B2AA9-9CA3-4EA0-A520-2E6939EB47BF} = {1F2B2AA9-9CA3-4EA0-A520-2E6939EB47BF}
+	EndProjectSection
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "SAPIServer", "org.mechio.native.app\SAPIServer\SAPIServer.vcproj", "{710E7045-553E-4D1D-8609-9B1AB70E7EC8}"
+	ProjectSection(ProjectDependencies) = postProject
+		{1F2B2AA9-9CA3-4EA0-A520-2E6939EB47BF} = {1F2B2AA9-9CA3-4EA0-A520-2E6939EB47BF}
+		{4CCD0BEA-42B2-41A3-96BE-0C08F1E490E1} = {4CCD0BEA-42B2-41A3-96BE-0C08F1E490E1}
+	EndProjectSection
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "org.mechio.native.motion", "org.mechio.native.lib\org.mechio.native.motion\org.mechio.native.motion.vcproj", "{953BCC8A-FA6C-45EA-BABE-D6C1EFFF7730}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "RobotMotionTest", "org.mechio.native.app\RobotMotionTest\RobotMotionTest.vcproj", "{82F49491-C005-4DE0-A1AB-DFD41E6781B6}"
+	ProjectSection(ProjectDependencies) = postProject
+		{953BCC8A-FA6C-45EA-BABE-D6C1EFFF7730} = {953BCC8A-FA6C-45EA-BABE-D6C1EFFF7730}
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Win32 = Debug|Win32
+		Release|Win32 = Release|Win32
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{5060B9A6-C6EE-47A3-90EF-F52442CBD737}.Debug|Win32.ActiveCfg = Debug|Win32
+		{5060B9A6-C6EE-47A3-90EF-F52442CBD737}.Debug|Win32.Build.0 = Debug|Win32
+		{5060B9A6-C6EE-47A3-90EF-F52442CBD737}.Release|Win32.ActiveCfg = Release|Win32
+		{5060B9A6-C6EE-47A3-90EF-F52442CBD737}.Release|Win32.Build.0 = Release|Win32
+		{86F90859-4E57-46A6-9D6C-6B6F0C289CB7}.Debug|Win32.ActiveCfg = Debug|Win32
+		{86F90859-4E57-46A6-9D6C-6B6F0C289CB7}.Debug|Win32.Build.0 = Debug|Win32
+		{86F90859-4E57-46A6-9D6C-6B6F0C289CB7}.Release|Win32.ActiveCfg = Release|Win32
+		{86F90859-4E57-46A6-9D6C-6B6F0C289CB7}.Release|Win32.Build.0 = Release|Win32
+		{4CCD0BEA-42B2-41A3-96BE-0C08F1E490E1}.Debug|Win32.ActiveCfg = Debug|Win32
+		{4CCD0BEA-42B2-41A3-96BE-0C08F1E490E1}.Debug|Win32.Build.0 = Debug|Win32
+		{4CCD0BEA-42B2-41A3-96BE-0C08F1E490E1}.Release|Win32.ActiveCfg = Release|Win32
+		{4CCD0BEA-42B2-41A3-96BE-0C08F1E490E1}.Release|Win32.Build.0 = Release|Win32
+		{1F2B2AA9-9CA3-4EA0-A520-2E6939EB47BF}.Debug|Win32.ActiveCfg = Debug|Win32
+		{1F2B2AA9-9CA3-4EA0-A520-2E6939EB47BF}.Debug|Win32.Build.0 = Debug|Win32
+		{1F2B2AA9-9CA3-4EA0-A520-2E6939EB47BF}.Release|Win32.ActiveCfg = Release|Win32
+		{1F2B2AA9-9CA3-4EA0-A520-2E6939EB47BF}.Release|Win32.Build.0 = Release|Win32
+		{D76AA1C1-4D36-44EA-B196-061104192BC2}.Debug|Win32.ActiveCfg = Debug|Win32
+		{D76AA1C1-4D36-44EA-B196-061104192BC2}.Debug|Win32.Build.0 = Debug|Win32
+		{D76AA1C1-4D36-44EA-B196-061104192BC2}.Release|Win32.ActiveCfg = Release|Win32
+		{D76AA1C1-4D36-44EA-B196-061104192BC2}.Release|Win32.Build.0 = Release|Win32
+		{77EA1C5E-14F8-46D0-89AC-C08C3AD10E9F}.Debug|Win32.ActiveCfg = Debug|Win32
+		{77EA1C5E-14F8-46D0-89AC-C08C3AD10E9F}.Debug|Win32.Build.0 = Debug|Win32
+		{77EA1C5E-14F8-46D0-89AC-C08C3AD10E9F}.Release|Win32.ActiveCfg = Release|Win32
+		{77EA1C5E-14F8-46D0-89AC-C08C3AD10E9F}.Release|Win32.Build.0 = Release|Win32
+		{3E8168CA-D88D-41A2-A59F-48821F428B14}.Debug|Win32.ActiveCfg = Debug|Win32
+		{3E8168CA-D88D-41A2-A59F-48821F428B14}.Debug|Win32.Build.0 = Debug|Win32
+		{3E8168CA-D88D-41A2-A59F-48821F428B14}.Release|Win32.ActiveCfg = Release|Win32
+		{3E8168CA-D88D-41A2-A59F-48821F428B14}.Release|Win32.Build.0 = Release|Win32
+		{7313D673-D1F5-4DEC-8B51-AAB6AC783D32}.Debug|Win32.ActiveCfg = Debug|Win32
+		{7313D673-D1F5-4DEC-8B51-AAB6AC783D32}.Debug|Win32.Build.0 = Debug|Win32
+		{7313D673-D1F5-4DEC-8B51-AAB6AC783D32}.Release|Win32.ActiveCfg = Release|Win32
+		{7313D673-D1F5-4DEC-8B51-AAB6AC783D32}.Release|Win32.Build.0 = Release|Win32
+		{C84DCC96-DA4E-4071-B9E1-99503ABF7A2F}.Debug|Win32.ActiveCfg = Debug|Win32
+		{C84DCC96-DA4E-4071-B9E1-99503ABF7A2F}.Debug|Win32.Build.0 = Debug|Win32
+		{C84DCC96-DA4E-4071-B9E1-99503ABF7A2F}.Release|Win32.ActiveCfg = Release|Win32
+		{C84DCC96-DA4E-4071-B9E1-99503ABF7A2F}.Release|Win32.Build.0 = Release|Win32
+		{24AEA762-80FC-45E4-A043-534814FF7B26}.Debug|Win32.ActiveCfg = Debug|Win32
+		{24AEA762-80FC-45E4-A043-534814FF7B26}.Debug|Win32.Build.0 = Debug|Win32
+		{24AEA762-80FC-45E4-A043-534814FF7B26}.Release|Win32.ActiveCfg = Release|Win32
+		{24AEA762-80FC-45E4-A043-534814FF7B26}.Release|Win32.Build.0 = Release|Win32
+		{375E12CA-BFCF-45D0-B561-46F84159B683}.Debug|Win32.ActiveCfg = Debug|Win32
+		{375E12CA-BFCF-45D0-B561-46F84159B683}.Debug|Win32.Build.0 = Debug|Win32
+		{375E12CA-BFCF-45D0-B561-46F84159B683}.Release|Win32.ActiveCfg = Release|Win32
+		{375E12CA-BFCF-45D0-B561-46F84159B683}.Release|Win32.Build.0 = Release|Win32
+		{098BB9E1-A7D7-4E29-8A2F-51C185C1AA4F}.Debug|Win32.ActiveCfg = Debug|Win32
+		{098BB9E1-A7D7-4E29-8A2F-51C185C1AA4F}.Debug|Win32.Build.0 = Debug|Win32
+		{098BB9E1-A7D7-4E29-8A2F-51C185C1AA4F}.Release|Win32.ActiveCfg = Release|Win32
+		{098BB9E1-A7D7-4E29-8A2F-51C185C1AA4F}.Release|Win32.Build.0 = Release|Win32
+		{710E7045-553E-4D1D-8609-9B1AB70E7EC8}.Debug|Win32.ActiveCfg = Debug|Win32
+		{710E7045-553E-4D1D-8609-9B1AB70E7EC8}.Debug|Win32.Build.0 = Debug|Win32
+		{710E7045-553E-4D1D-8609-9B1AB70E7EC8}.Release|Win32.ActiveCfg = Release|Win32
+		{710E7045-553E-4D1D-8609-9B1AB70E7EC8}.Release|Win32.Build.0 = Release|Win32
+		{953BCC8A-FA6C-45EA-BABE-D6C1EFFF7730}.Debug|Win32.ActiveCfg = Debug|Win32
+		{953BCC8A-FA6C-45EA-BABE-D6C1EFFF7730}.Debug|Win32.Build.0 = Debug|Win32
+		{953BCC8A-FA6C-45EA-BABE-D6C1EFFF7730}.Release|Win32.ActiveCfg = Release|Win32
+		{953BCC8A-FA6C-45EA-BABE-D6C1EFFF7730}.Release|Win32.Build.0 = Release|Win32
+		{82F49491-C005-4DE0-A1AB-DFD41E6781B6}.Debug|Win32.ActiveCfg = Debug|Win32
+		{82F49491-C005-4DE0-A1AB-DFD41E6781B6}.Debug|Win32.Build.0 = Debug|Win32
+		{82F49491-C005-4DE0-A1AB-DFD41E6781B6}.Release|Win32.ActiveCfg = Release|Win32
+		{82F49491-C005-4DE0-A1AB-DFD41E6781B6}.Release|Win32.Build.0 = Release|Win32
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
