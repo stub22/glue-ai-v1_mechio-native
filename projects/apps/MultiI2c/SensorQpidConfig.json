@@ -1,0 +1,21 @@
+{
+	"brokerIPAddress": "127.0.0.1:5672",
+    "brokerOptions": "{username:admin,password:admin}",
+    "accelerometerReadDestination": "accelerometerRead; {create:always, node:{type:topic}}",
+    "accelerometerEventDestination": "accelerometerEvent; {create:always, node:{type:topic}}",
+	"accelerometerConfigDestination": "accelerometerConfig; {create:always, node:{type:topic}}",
+    "compassReadDestination": "compassRead; {create:always, node:{type:topic}}",
+    "compassEventDestination": "compassEvent; {create:always, node:{type:topic}}",
+	"compassConfigDestination": "compassConfig; {create:always, node:{type:topic}}",
+    "gyroReadDestination": "gyroRead; {create:always, node:{type:topic}}",
+    "gyroEventDestination": "gyroEvent; {create:always, node:{type:topic}}",
+	"gyroConfigDestination": "gyroConfig; {create:always, node:{type:topic}}",
+    "gpioReadDestination": "gpioRead; {create:always, node:{type:topic}}",
+    "gpioWriteDestination": "gpioWrite; {create:always, node:{type:topic}}",
+    "gpioEventDestination": "gpioEvent; {create:always, node:{type:topic}}",
+	"gpioConfigDestination": "gpioConfig; {create:always, node:{type:topic}}",
+    "adcReadDestination": "adcRead; {create:always, node:{type:topic}}",
+    "adcEventDestination": "adcEvent; {create:always, node:{type:topic}}",
+	"adcConfigDestination": "adcConfig; {create:always, node:{type:topic}}",
+	"ledConfigDestination": "ledConfig; {create:always, node:{type:topic}}"
+}

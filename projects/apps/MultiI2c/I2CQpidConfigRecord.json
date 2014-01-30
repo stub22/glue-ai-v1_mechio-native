@@ -1,0 +1,23 @@
+{"name": "I2CQpidConfigRecord", "type": "record",
+    "fields": [
+        {"name": "brokerIPAddress",   "type": "string"},
+        {"name": "brokerOptions",   "type": "string"},
+        {"name": "accelerometerReadDestination",   "type": "string"},
+        {"name": "accelerometerEventDestination",   "type": "string"},
+        {"name": "accelerometerConfigDestination",   "type": "string"},
+        {"name": "compassReadDestination",   "type": "string"},
+        {"name": "compassEventDestination",   "type": "string"},
+        {"name": "compassConfigDestination",   "type": "string"},
+        {"name": "gyroReadDestination",   "type": "string"},
+        {"name": "gyroEventDestination",   "type": "string"},
+        {"name": "gyroConfigDestination",   "type": "string"},
+        {"name": "gpioReadDestination",   "type": "string"},
+        {"name": "gpioWriteDestination",   "type": "string"},
+        {"name": "gpioEventDestination",   "type": "string"},
+        {"name": "gpioConfigDestination",   "type": "string"},
+        {"name": "adcReadDestination",   "type": "string"},
+        {"name": "adcEventDestination",   "type": "string"},
+        {"name": "adcConfigDestination",   "type": "string"},
+        {"name": "ledConfigDestination",   "type": "string"}
+    ]
+}

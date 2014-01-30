@@ -1,0 +1,16 @@
+{"name": "FaceDetectConfig", "type": "record",
+    "fields": [
+        {"name": "brokerAddress", "type": "string"},
+        {"name": "connectionOptions", "type": "string"},
+        {"name": "imageEventDestination", "type": "string"},
+        {"name": "procEventDestination", "type": "string"},
+        {"name": "commandDestination", "type": "string"},
+        {"name": "errorDestination", "type": "string"},
+        {"name": "haarFileLocation", "type": "string"},
+        {"name": "scaleFactor", "type": "double"},
+        {"name": "neighbors", "type": "int"},
+        {"name": "haarFlags", "type": "int"},
+        {"name": "minFaceWidth", "type": "int"},
+        {"name": "minFaceHeight", "type": "int"}
+    ]
+}

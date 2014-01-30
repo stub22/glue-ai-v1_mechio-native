@@ -1,0 +1,17 @@
+{
+	"brokerAddress":"127.0.0.1:5672",
+	"connectionOptions":"{username:admin,password:admin}",
+	"eventDestination":"camera1Event; {create: always, node: {type: topic}}",
+    "commandDestination":"camera1Command; {create: always, node: {type: queue}}",
+    "errorDestination":"camera1Error; {create: always, node: {type: topic}}",
+	"cameraNumber":1,
+	"frameLength":100,
+	"imageWidth":320,
+	"imageHeight":240,
+	"imageChannels":1,
+	"cameraWidth":320,
+	"cameraHeight":240,
+	"cameraChannels":3,
+	"flipImage":false,
+	"flipImageHorizontal":false
+}

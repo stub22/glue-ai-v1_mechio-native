@@ -1,0 +1,50 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 10.00
+# Visual C++ Express 2008
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "CameraCapture", "CameraCapture\CameraCapture.vcproj", "{C84DCC96-DA4E-4071-B9E1-99503ABF7A2F}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "CameraDisplay", "CameraDisplay\CameraDisplay.vcproj", "{24AEA762-80FC-45E4-A043-534814FF7B26}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "FaceDetector", "FaceDetector\FaceDetector.vcproj", "{375E12CA-BFCF-45D0-B561-46F84159B683}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "SAPIServer", "SAPIServer\SAPIServer.vcproj", "{710E7045-553E-4D1D-8609-9B1AB70E7EC8}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "SAPIClient", "SAPIClient\SAPIClient.vcproj", "{098BB9E1-A7D7-4E29-8A2F-51C185C1AA4F}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "RobotMotionTest", "RobotMotionTest\RobotMotionTest.vcproj", "{82F49491-C005-4DE0-A1AB-DFD41E6781B6}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Win32 = Debug|Win32
+		Release|Win32 = Release|Win32
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{C84DCC96-DA4E-4071-B9E1-99503ABF7A2F}.Debug|Win32.ActiveCfg = Debug|Win32
+		{C84DCC96-DA4E-4071-B9E1-99503ABF7A2F}.Debug|Win32.Build.0 = Debug|Win32
+		{C84DCC96-DA4E-4071-B9E1-99503ABF7A2F}.Release|Win32.ActiveCfg = Release|Win32
+		{C84DCC96-DA4E-4071-B9E1-99503ABF7A2F}.Release|Win32.Build.0 = Release|Win32
+		{24AEA762-80FC-45E4-A043-534814FF7B26}.Debug|Win32.ActiveCfg = Debug|Win32
+		{24AEA762-80FC-45E4-A043-534814FF7B26}.Debug|Win32.Build.0 = Debug|Win32
+		{24AEA762-80FC-45E4-A043-534814FF7B26}.Release|Win32.ActiveCfg = Release|Win32
+		{24AEA762-80FC-45E4-A043-534814FF7B26}.Release|Win32.Build.0 = Release|Win32
+		{375E12CA-BFCF-45D0-B561-46F84159B683}.Debug|Win32.ActiveCfg = Debug|Win32
+		{375E12CA-BFCF-45D0-B561-46F84159B683}.Debug|Win32.Build.0 = Debug|Win32
+		{375E12CA-BFCF-45D0-B561-46F84159B683}.Release|Win32.ActiveCfg = Release|Win32
+		{375E12CA-BFCF-45D0-B561-46F84159B683}.Release|Win32.Build.0 = Release|Win32
+		{710E7045-553E-4D1D-8609-9B1AB70E7EC8}.Debug|Win32.ActiveCfg = Debug|Win32
+		{710E7045-553E-4D1D-8609-9B1AB70E7EC8}.Debug|Win32.Build.0 = Debug|Win32
+		{710E7045-553E-4D1D-8609-9B1AB70E7EC8}.Release|Win32.ActiveCfg = Release|Win32
+		{710E7045-553E-4D1D-8609-9B1AB70E7EC8}.Release|Win32.Build.0 = Release|Win32
+		{098BB9E1-A7D7-4E29-8A2F-51C185C1AA4F}.Debug|Win32.ActiveCfg = Debug|Win32
+		{098BB9E1-A7D7-4E29-8A2F-51C185C1AA4F}.Debug|Win32.Build.0 = Debug|Win32
+		{098BB9E1-A7D7-4E29-8A2F-51C185C1AA4F}.Release|Win32.ActiveCfg = Release|Win32
+		{098BB9E1-A7D7-4E29-8A2F-51C185C1AA4F}.Release|Win32.Build.0 = Release|Win32
+		{82F49491-C005-4DE0-A1AB-DFD41E6781B6}.Debug|Win32.ActiveCfg = Debug|Win32
+		{82F49491-C005-4DE0-A1AB-DFD41E6781B6}.Debug|Win32.Build.0 = Debug|Win32
+		{82F49491-C005-4DE0-A1AB-DFD41E6781B6}.Release|Win32.ActiveCfg = Release|Win32
+		{82F49491-C005-4DE0-A1AB-DFD41E6781B6}.Release|Win32.Build.0 = Release|Win32
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

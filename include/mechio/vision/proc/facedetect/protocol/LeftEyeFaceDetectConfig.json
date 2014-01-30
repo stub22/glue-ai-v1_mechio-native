@@ -1,0 +1,14 @@
+{
+        "brokerAddress":"127.0.0.1:5672",
+        "connectionOptions":"{username:admin,password:admin}",
+        "imageEventDestination":"camera1Event; {create: always, node: {type: topic}}",
+        "procEventDestination":"visionproc1Event; {create: always, node: {type: topic}}",
+        "commandDestination":"visionproc1Command; {create: always, node: {type: queue}}",
+        "errorDestination":"visionproc1Error; {create: always, node: {type: topic}}",
+        "haarFileLocation":"haarcascade_frontalface_default.xml",
+        "scaleFactor":1.5,
+        "neighbors":3,
+        "haarFlags":0,
+        "minFaceWidth":40,
+        "minFaceHeight":40
+}

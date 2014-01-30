@@ -1,0 +1,14 @@
+{"name": "MotionDetectConfig", "type": "record",
+    "fields": [
+        {"name": "brokerAddress", "type": "string"},
+        {"name": "connectionOptions", "type": "string"},
+        {"name": "imageEventDestination", "type": "string"},
+        {"name": "procEventDestination", "type": "string"},
+        {"name": "commandDestination", "type": "string"},
+        {"name": "errorDestination", "type": "string"},
+        {"name": "imageProcessorId", "type": "string"},
+        {"name": "imageSourceId", "type": "string"},
+        {"name": "imageWidth", "type": "int"},
+        {"name": "imageHeight", "type": "int"}
+    ]
+}

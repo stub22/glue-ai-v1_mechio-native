@@ -1,0 +1,15 @@
+{
+    "name": "ImageDisplayConfig", "type": "record",
+    "fields": [
+        {"name": "brokerAddress", "type": "string"},
+        {"name": "connectionOptions", "type": "string"},
+        {"name": "imageEventDestination", "type": "string"},
+        {"name": "procEventDestination", "type": "string"},
+        {"name": "commandDestination", "type": "string"},
+        {"name": "errorDestination", "type": "string"},
+        {"name": "cameraCommandDestination", "type": "string"},
+        {"name": "procCommandDestination", "type": "string"},
+        {"name": "drawRate", "type": "int"},
+        {"name": "windowName", "type": "string"}
+    ]
+}

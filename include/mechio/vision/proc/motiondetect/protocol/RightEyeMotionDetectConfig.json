@@ -1,0 +1,12 @@
+{
+        "brokerAddress":"127.0.0.1:5672",
+        "connectionOptions":"{username:admin,password:admin}",
+        "imageEventDestination":"camera0Event; {create: always, node: {type: topic}}",
+        "procEventDestination":"visionproc0Event; {create: always, node: {type: topic}}",
+        "commandDestination":"visionproc0Command; {create: always, node: {type: queue}}",
+        "errorDestination":"visionproc0Error; {create: always, node: {type: topic}}",
+        "imageProcessorId":"motiondetect0",
+        "imageSourceId":"camera0",
+        "imageWidth":320,
+        "imageHeight":240
+}
