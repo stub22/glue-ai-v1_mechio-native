@@ -1,0 +1,21 @@
+{
+    "name": "CameraConfig", "type": "record",
+    "fields": [
+        {"name": "brokerAddress", "type": "string"},
+        {"name": "connectionOptions", "type": "string"},
+        {"name": "eventDestination", "type": "string"},
+        {"name": "commandDestination", "type": "string"},
+        {"name": "errorDestination", "type": "string"},
+        {"name": "cameraNumber", "type": "int"},
+        {"name": "frameLength", "type": "int"},
+        {"name": "imageWidth", "type": "int"},
+        {"name": "imageHeight", "type": "int"},
+        {"name": "imageChannels", "type": "int"},
+        {"name": "cameraWidth", "type": "int"},
+        {"name": "cameraHeight", "type": "int"},
+        {"name": "cameraChannels", "type": "int"},
+        {"name": "flipImage", "type": "boolean"},
+        {"name": "flipImageHorizontal", "type": "boolean"}
+    ]
+}
+
