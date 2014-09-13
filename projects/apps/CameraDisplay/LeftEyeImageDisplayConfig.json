@@ -1,0 +1,12 @@
+{
+        "brokerAddress":"127.0.0.1:5672",
+        "connectionOptions":"{username:admin,password:admin}",
+        "imageEventDestination":"camera1Event; {create: always, node: {type: topic}}",
+        "procEventDestination":"visionproc1Event; {create: always, node: {type: topic}}",
+        "commandDestination":"display1Command; {create: always, node: {type: queue}}",
+        "errorDestination":"display1Error; {create: always, node: {type: topic}}",
+        "cameraCommandDestination":"camera1Command; {create: always, node: {type: queue}}",
+        "procCommandDestination":"visionproc1Command; {create: always, node: {type: queue}}",
+        "drawRate":10,
+        "windowName":"Display"
+}
