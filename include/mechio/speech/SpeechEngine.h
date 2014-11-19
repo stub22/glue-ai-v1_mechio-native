@@ -3,6 +3,7 @@
 
 #include <string.h>
 #include "mechio/messaging/MessageSender.h"
+#include "mechio/speech/protocol/SpeechRequestRecord.h"
 
 namespace mechio {
   namespace speech { 
@@ -13,7 +14,8 @@ namespace mechio {
             virtual bool isInitialized() = 0;
             virtual void stop() = 0;
 
-            virtual unsigned long speak(const std::string& phrase) = 0;
+            virtual unsigned long speak(SpeechRequestRecord* request ) = 0;
+//            virtual unsigned long speak(const std::string& phrase) = 0;
             virtual unsigned long cancelSpeech() = 0;
             
             virtual bool changeVoice(std::string voiceName) = 0;

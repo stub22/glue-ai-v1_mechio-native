@@ -65,7 +65,8 @@ void SpeechService::threadSafeWorker(){
         }
     }
 
-	mySpeechEngine->speak(req->phrase);
+//	mySpeechEngine->speak(req->phrase);
+	mySpeechEngine->speak(req);
 }
 
 bool SpeechService::_initialize(SpeechConfigRecord* conf){
