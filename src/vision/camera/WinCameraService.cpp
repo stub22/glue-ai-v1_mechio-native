@@ -43,7 +43,7 @@ void WinCameraService::setFlipVertical(bool flip){
     myFlipVerticalFlag = flip;
 }
 
-void CameraService::setFlipHorizontal(bool flip){
+void WinCameraService::setFlipHorizontal(bool flip){
     myFlipHorizontalFlag = flip;
 }
 

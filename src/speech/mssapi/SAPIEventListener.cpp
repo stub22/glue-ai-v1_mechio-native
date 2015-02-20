@@ -48,7 +48,7 @@ DWORD SAPIEventListener::runListener(void *params){
 			break;
 		}else if(hr == (WAIT_OBJECT_0 + 3)){//SAPI EVENT
 			if(!silent){
-				SpeechEventListRecord eventList = fetchEvents(spEvent, voice);
+				SpeechEventListRecord eventList = fetchEvents(spEvent, voice, ((SAPIListenData*)params)->m_reqQueue);
 				sender->send<SpeechEventListRecord>(&eventList);
 			}else{
 				//flush out events
@@ -63,13 +63,21 @@ DWORD SAPIEventListener::runListener(void *params){
 	return S_OK;
 }
 
-SpeechEventListRecord SAPIEventListener::fetchEvents(CSpEvent &spEvent, ISpVoice *voice){
+SpeechEventListRecord SAPIEventListener::fetchEvents(CSpEvent &spEvent, ISpVoice *voice, std::queue<int64_t>* reqQueue){
 	SpeechEventListRecord list;
 	list.speechServiceId ="MSSAPI";
 	list.timestampMillisecUTC = static_cast<long>(GetTickCount());
 	HRESULT eventFetchResult = S_OK;
 	while(spEvent.GetFrom(voice) == S_OK){
 		SpeechEventRecord eventRec = fetchSpeechEventRecord(spEvent);
+		if(reqQueue->empty()){
+			eventRec.streamNumber = -1;
+		}else{
+			eventRec.streamNumber = reqQueue->front();
+		}
+		if(eventRec.eventType.compare("SPEECH_END") == 0 && !reqQueue->empty()){
+			reqQueue->pop();
+		}
 		list.speechEvents.push_back(eventRec);
 	}
 	return list;

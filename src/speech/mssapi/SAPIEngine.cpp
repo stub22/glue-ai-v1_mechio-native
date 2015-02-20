@@ -3,12 +3,14 @@
 #include "sphelper.h"
 #include <iostream>
 #include <exception>
+#include <stdlib.h>
 #include "mechio/speech/mssapi/SAPIEngine.h"
 
 using namespace mechio;
 using namespace mechio::speech;
 
 SAPIEngine::SAPIEngine() : m_voice(0), m_listener(0), m_initialized(false), m_listening(false){
+	m_reg = new boost::regex("\\\\+[^\\\\]*\\\\+");
 	if(FAILED(CoInitializeEx(NULL, COINIT_MULTITHREADED))){
 		std::cout << "Failed initializing SapiEngine: Failed to initialize COM." << std::endl;
 		return;
@@ -56,7 +58,8 @@ void SAPIEngine::stop(){
 	stopEventListener();
 }
 
-unsigned long SAPIEngine::speak(const std::string& phrase){
+unsigned long SAPIEngine::speak(SpeechRequestRecord* request){
+	std::string phrase = boost::regex_replace(request->phrase, *m_reg, "");
 	bool xml = ((phrase.find("<sapi>") != std::string::npos) 
 		|| (phrase.find("<SAPI>") != std::string::npos));
 	unsigned long xmlFlag = xml ? SPF_IS_XML : SPF_IS_NOT_XML;
@@ -64,8 +67,9 @@ unsigned long SAPIEngine::speak(const std::string& phrase){
 	WCHAR* txt = new WCHAR[phrase.size() + 2];
 	std::copy(phrase.begin(), phrase.end(), txt);
 	txt[phrase.size()] = 0;
-
+	int64_t reqId = _strtoi64(request->requestSourceId.c_str(), NULL, 10);
 	ULONG stream = 0;
+	m_reqQueue.push(reqId);
 	if(m_voice->Speak(txt, SPF_ASYNC | xmlFlag, &stream) != S_OK){
 		std::cout << "ISpVoice->Speak() failed!";
 	}
@@ -75,6 +79,10 @@ unsigned long SAPIEngine::speak(const std::string& phrase){
 
 ULONG SAPIEngine::cancelSpeech(){
 	ULONG streamNumber = 0;
+	while(!m_reqQueue.empty()){
+		m_reqQueue.pop();
+	}
+	m_reqQueue.push(-1);
 	if (m_voice->Speak(L"\0", SPF_ASYNC | SPF_PURGEBEFORESPEAK, &streamNumber) != S_OK){
 		std::cout << "ISpVoice->Speak() failed!";
 	}
@@ -83,6 +91,7 @@ ULONG SAPIEngine::cancelSpeech(){
 
 void SAPIEngine::setEventSender(MessageSender* eventSender){
 	SAPIListenData *data = new SAPIListenData();
+	data->m_reqQueue = &m_reqQueue;
 	data->m_voice = m_voice;
 	data->m_sender = eventSender;
 	for(int i=0; i<3; i++){

@@ -5,6 +5,8 @@
 #include <windows.h>
 #include "sphelper.h"
 #include <string>
+#include <queue>
+#include <boost/regex.hpp>
 #include "mechio/speech/SpeechEngine.h"
 #include "SAPIEventListener.h"
 
@@ -22,7 +24,7 @@ namespace mechio {
 			bool isInitialized();
 			void stop();
 
-			unsigned long speak(const std::string& phrase);
+			unsigned long speak(SpeechRequestRecord* request);
 			unsigned long cancelSpeech();
 
             void setEventSender(MessageSender* eventSender);
@@ -39,6 +41,8 @@ namespace mechio {
 			SAPIEventListener* m_listener;
 			bool m_initialized;
 			bool m_listening;
+			std::queue<int64_t> m_reqQueue;
+			boost::regex* m_reg;
 	};
 	static SAPIEngine* s_SAPIEngineInstance;
 }}

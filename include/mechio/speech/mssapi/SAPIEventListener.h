@@ -5,6 +5,7 @@
 #include <windows.h>
 #include "sphelper.h"
 #include <string>
+#include <queue>
 #include "mechio/messaging/MessageSender.h"
 #include "mechio/speech/protocol/SpeechEventListRecord.h"
 
@@ -13,6 +14,7 @@ namespace mechio {
    
 	enum {SP_START=0, SP_STOP=1, SP_TERMINATE=2, SP_MAX_LISTEN_EVENTS=3};
 	struct SAPIListenData {
+		std::queue<int64_t>* m_reqQueue;
 		HANDLE m_eventListen[SP_MAX_LISTEN_EVENTS];
 		ISpVoice* m_voice;
 		MessageSender* m_sender;
@@ -25,7 +27,7 @@ namespace mechio {
 
 		private:
 			static DWORD runListener(void *params);
-			static SpeechEventListRecord fetchEvents(CSpEvent &spEvent, ISpVoice *voice);
+			static SpeechEventListRecord fetchEvents(CSpEvent &spEvent, ISpVoice *voice, std::queue<int64_t>* reqQueue);
 			static SpeechEventRecord fetchSpeechEventRecord(CSpEvent &spEvent);
 			static SpeechEventRecord speechStartEvent(CSpEvent &spEvent);
 			static SpeechEventRecord speechEndEvent(CSpEvent &spEvent);
