@@ -4,6 +4,7 @@
 #include <iostream>
 #include <exception>
 #include <stdlib.h>
+#include <stdint.h> 
 #include "mechio/speech/mssapi/SAPIEngine.h"
 
 using namespace mechio;
@@ -58,11 +59,11 @@ void SAPIEngine::stop(){
 	stopEventListener();
 }
 
-unsigned long SAPIEngine::speak(SpeechRequestRecord* request){
+uint64_t SAPIEngine::speak(SpeechRequestRecord* request){
 	std::string phrase = boost::regex_replace(request->phrase, *m_reg, "");
 	bool xml = ((phrase.find("<sapi>") != std::string::npos) 
 		|| (phrase.find("<SAPI>") != std::string::npos));
-	unsigned long xmlFlag = xml ? SPF_IS_XML : SPF_IS_NOT_XML;
+	uint64_t xmlFlag = xml ? SPF_IS_XML : SPF_IS_NOT_XML;
 
 	WCHAR* txt = new WCHAR[phrase.size() + 2];
 	std::copy(phrase.begin(), phrase.end(), txt);
