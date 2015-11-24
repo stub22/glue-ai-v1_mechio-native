@@ -9,6 +9,7 @@
 #include <boost/regex.hpp>
 #include "mechio/speech/SpeechEngine.h"
 #include "SAPIEventListener.h"
+#include <stdint.h> 
 
 namespace mechio {
   namespace speech { 
@@ -24,8 +25,8 @@ namespace mechio {
 			bool isInitialized();
 			void stop();
 
-			unsigned long speak(SpeechRequestRecord* request);
-			unsigned long cancelSpeech();
+			uint64_t speak(SpeechRequestRecord* request);
+			uint64_t cancelSpeech();
 
             void setEventSender(MessageSender* eventSender);
 			void startEventListener();
