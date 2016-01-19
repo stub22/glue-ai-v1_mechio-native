@@ -78,7 +78,7 @@ uint64_t SAPIEngine::speak(SpeechRequestRecord* request){
 	return stream;
 }
 
-ULONG SAPIEngine::cancelSpeech(){
+uint64_t SAPIEngine::cancelSpeech(){
 	ULONG streamNumber = 0;
 	while(!m_reqQueue.empty()){
 		m_reqQueue.pop();
