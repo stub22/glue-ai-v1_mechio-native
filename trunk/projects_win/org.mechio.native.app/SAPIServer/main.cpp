@@ -43,68 +43,123 @@ MessageReceiver* receiver(
     return receiver;
 }
 
-void serviceProvider(string broker, string prefix, string configFile){
-    cout << "Creating service at addr: " << broker << 
-            ", queue prefix: " << prefix << 
-            //", config file: " << configFile << 
-			"\n";
-	MessagingProvider* aqs1 = new MessagingProvider(broker.c_str());
-	while(!aqs1->connect()){
-		cout << "Unable to connect to broker at addr: " << broker << 
-			"\nattempting again in 5 seconds.\n";
-		boost::this_thread::sleep(boost::posix_time::milliseconds(5000));
-	}
-	MessagingProvider* aqs2 = new MessagingProvider(broker.c_str());
-	aqs2->connect();
-	MessagingProvider* aqs3 = new MessagingProvider(broker.c_str());
-	aqs3->connect();
-	
-	MessageReceiver* requestReceiver = NULL;
-	MessageSender* eventSender = NULL;
-	MessageReceiver* commandReceiver = NULL;
-	MessageSender* errorSender = NULL;
-	while(requestReceiver == NULL || commandReceiver == NULL || eventSender == NULL || errorSender == NULL){
+MessageSender* connectSender(MessagingProvider *provider, string prefix, string destination){
+	MessageSender* msgSender = NULL;
+	while(msgSender == NULL){
 		try {
-			
-			if(requestReceiver == NULL){
-				requestReceiver = receiver(aqs1, prefix, "Request");
-			}
-			if(commandReceiver == NULL){
-				commandReceiver = receiver(aqs3, prefix, "Command");
-			}
-			if(eventSender == NULL){
-				eventSender = sender(aqs2, prefix, "Event");
-			}
-			if(errorSender == NULL){
-				errorSender = sender(aqs3, prefix, "Error");
-			}
+			msgSender = sender(provider, prefix, destination);
 		} catch(const exception& error) {
-			cout << "Unable to connect to topics.\nattempting again in 5 seconds.\n";
+			cout << "Unable to connect sender: " << prefix << destination <<".\nattempting again in 5 seconds.\n";
+			msgSender = NULL;
 			boost::this_thread::sleep(boost::posix_time::milliseconds(5000));
 		} catch(...){
-			cout << "Unable to connect to topics.\nattempting again in 5 seconds.\n";
+			cout << "Unable to connect sender: " << prefix << destination <<".\nattempting again in 5 seconds.\n";
+			msgSender = NULL;
 			boost::this_thread::sleep(boost::posix_time::milliseconds(5000));
 		}
 	}
-	RemoteService<SpeechConfigRecord>* service = 
-			(RemoteService<SpeechConfigRecord>*)
-					new SpeechService((SpeechEngine*)SAPIEngine::instance());
-	SpeechConfigRecord* conf = speechConfig(16000);
-			//loadFromJsonFile<SpeechConfigRecord>((char*)configFile.c_str());
-	if(!service->initialize(conf)){
-		warn("Unable to initialize speech service.");
+	return msgSender;
+}
+
+MessageReceiver* connectReceiver(MessagingProvider *provider, string prefix, string destination){
+	MessageReceiver* msgReceiver = NULL;
+	while(msgReceiver == NULL){
+		try {
+			msgReceiver = receiver(provider, prefix, destination);
+		} catch(const exception& error) {
+			cout << "Unable to connect receiver: " << prefix << destination <<".\nattempting again in 5 seconds.\n";
+			msgReceiver = NULL;
+			boost::this_thread::sleep(boost::posix_time::milliseconds(5000));
+		} catch(...){
+			cout << "Unable to connect receiver: " << prefix << destination <<".\nattempting again in 5 seconds.\n";
+			msgReceiver = NULL;
+			boost::this_thread::sleep(boost::posix_time::milliseconds(5000));
+		}
+	}
+	return msgReceiver;
+}
+
+MessagingProvider* connectProvider(string address){
+	MessagingProvider* msgProvider = NULL;
+	while(msgProvider == NULL){
+		try {
+			msgProvider = new MessagingProvider(address.c_str());
+			while(!msgProvider->connect()){
+				cout << "Unable to connect to broker at addr: " << address << "\nattempting again in 5 seconds.\n";
+				boost::this_thread::sleep(boost::posix_time::milliseconds(5000));
+			}
+		} catch(const exception& error) {
+			cout << "Unable to connect to broker at addr: " << address << "\nattempting again in 5 seconds.\n";
+			msgProvider = NULL;
+			boost::this_thread::sleep(boost::posix_time::milliseconds(5000));
+		} catch(...){
+			cout << "Unable to connect to broker at addr: " << address << "\nattempting again in 5 seconds.\n";
+			msgProvider = NULL;
+			boost::this_thread::sleep(boost::posix_time::milliseconds(5000));
+		}
+	}
+	return msgProvider;
+}
+
+void serviceProvider(string broker, string prefix, string configFile){
+	while(true){
+		cout << "Creating service at addr: " << broker << 
+		        ", queue prefix: " << prefix << 
+		        //", config file: " << configFile << 
+				"\n";
+		MessagingProvider* aqs1 = NULL;
+		MessagingProvider* aqs2 = NULL;
+		MessagingProvider* aqs3 = NULL;
+
+		try{
+			aqs1 = connectProvider(broker);
+			aqs2 = connectProvider(broker);
+			aqs3 = connectProvider(broker);
+	
+			MessageReceiver* requestReceiver = connectReceiver(aqs1, prefix, "Request");
+			MessageSender* eventSender = connectSender(aqs2, prefix, "Event");
+			MessageReceiver* commandReceiver = connectReceiver(aqs3, prefix, "Command");
+			MessageSender* errorSender = connectSender(aqs3, prefix, "Error");
+
+			RemoteService<SpeechConfigRecord>* service = 
+					(RemoteService<SpeechConfigRecord>*)
+							new SpeechService((SpeechEngine*)SAPIEngine::instance());
+			SpeechConfigRecord* conf = speechConfig(16000);
+
+			if(!service->initialize(conf)){
+				warn("Unable to initialize speech service.");
+				return;
+			}
+			((SpeechService*)service)->setEventSender(eventSender);
+			((SpeechService*)service)->setRequestReceiver(requestReceiver);
+			service->start();
+		
+			RemoteServiceHost<SpeechConfigRecord> provider(
+					service, commandReceiver, errorSender);
+			provider.start();
+		} catch(const exception& error) {
+			cout << "Speech server error.  Attempting to shutdown.";
+		} catch(...){
+			cout << "Speech server error.  Attempting to shutdown.";
+		}
+
+		if(aqs1 != NULL){
+			try{
+				aqs1->disconnect();
+			} catch(...){}
+		}
+		if(aqs1 != NULL){
+			try{
+				aqs2->disconnect();
+			} catch(...){}
+		}
+		if(aqs1 != NULL){
+			try{
+				aqs3->disconnect();
+			} catch(...){}
+		}
 		return;
 	}
-	((SpeechService*)service)->setEventSender(eventSender);
-	((SpeechService*)service)->setRequestReceiver(requestReceiver);
-	service->start();
-    
-	RemoteServiceHost<SpeechConfigRecord> provider(
-			service, commandReceiver, errorSender);
-	provider.start();
-	aqs1->disconnect();
-	aqs2->disconnect();
-	aqs3->disconnect();
 		
 }
 
