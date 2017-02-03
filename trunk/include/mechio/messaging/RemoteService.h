@@ -44,7 +44,9 @@ namespace mechio{
                     }
                     mechio::common::info("MechIO Service Closing");
                 }catch(...){}
-                service->close();
+                try{
+					service->close();
+                }catch(...){}
                 service->myCloseFlag = true;
             }
         public:
